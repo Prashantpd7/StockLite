@@ -1333,11 +1333,20 @@ td.num {
 /* -------------------------------------------------------------------------
  * Marketing home page
  * ----------------------------------------------------------------------- */
+/* Homepage fills the viewport as a flex column so the hero can grow and the
+   cards settle toward the lower area — balanced spacing, no scroll. */
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .marketing-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 48px;
+  flex-shrink: 0;
+  padding: 20px 48px;
   background: transparent;
   gap: 16px;
 }
@@ -1372,21 +1381,22 @@ td.num {
 .hero-split {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  min-height: calc(72vh - 76px);
+  flex: 1 1 auto;
   align-items: center;
+  padding: clamp(16px, 3vh, 40px) 0;
 }
 
 .hero-copy {
   background: transparent;
-  padding: 56px;
+  padding: 28px 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .hero-copy h1 {
-  font-size: 46px;
-  line-height: 1.08;
+  font-size: clamp(34px, 3.1vw, 44px);
+  line-height: 1.1;
   max-width: 520px;
   color: var(--white);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -1395,8 +1405,8 @@ td.num {
 .hero-copy p {
   color: var(--text-soft);
   font-size: 15.5px;
-  max-width: 440px;
-  margin: 20px 0 30px;
+  max-width: 460px;
+  margin: 16px 0 26px;
   line-height: 1.6;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
@@ -1409,7 +1419,7 @@ td.num {
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 460px;
+  min-height: clamp(300px, 40vh, 520px);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   border: 1px solid var(--line-dark);
   border-right: none;
@@ -1441,7 +1451,7 @@ td.num {
 
 .floating-panel {
   position: relative;
-  width: 300px;
+  width: 280px;
   background: linear-gradient(
     160deg,
     rgba(34, 44, 46, 0.86),
@@ -1449,7 +1459,7 @@ td.num {
   );
   color: var(--text);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: 18px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--line-dark);
   backdrop-filter: blur(10px);
@@ -1467,9 +1477,9 @@ td.num {
 
 .floating-panel .big-stat {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 700;
-  margin-top: 6px;
+  margin-top: 4px;
   color: var(--white);
 }
 
@@ -1480,21 +1490,22 @@ td.num {
   border: 1px solid var(--line-dark);
   backdrop-filter: blur(6px);
   border-radius: 10px;
-  padding: 11px 15px;
-  font-size: 12.5px;
+  padding: 9px 13px;
+  font-size: 12px;
   box-shadow: var(--shadow-md);
   z-index: 2;
 }
 
 .quick-links-section {
-  padding: 56px 56px 90px;
+  flex-shrink: 0;
+  padding: 8px 56px clamp(28px, 5vh, 52px);
   position: relative;
   z-index: 1;
 }
 
 .quick-links-section h2 {
-  font-size: 23px;
-  margin-bottom: 22px;
+  font-size: 20px;
+  margin-bottom: 16px;
   color: var(--white);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
@@ -1502,13 +1513,13 @@ td.num {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
 .feature-card p {
   font-size: 13.5px;
   color: var(--text-muted);
-  margin: 7px 0 0;
+  margin: 6px 0 0;
   line-height: 1.5;
 }
 
@@ -1521,7 +1532,7 @@ td.num {
   border-radius: var(--radius-sm);
   background: rgba(88, 173, 126, 0.14);
   color: var(--moss-text);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   transition:
     background 0.16s ease,
     color 0.16s ease;
@@ -1536,7 +1547,7 @@ td.num {
   background: var(--glass);
   border: 1px solid var(--line-dark);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: 20px 22px;
   box-shadow: var(--shadow-md);
   backdrop-filter: blur(14px) saturate(120%);
   transition:

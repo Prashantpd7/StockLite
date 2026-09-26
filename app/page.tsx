@@ -37,7 +37,7 @@ const QUICK_LINKS = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="home-page">
       <nav className="marketing-nav">
         <span className="brand">StockLite</span>
         <div className="links">
@@ -47,10 +47,10 @@ export default function HomePage() {
 
       <section className="hero-split">
         <div className="hero-copy">
-          <h1>Warehouse stock, tracked the moment it moves.</h1>
+          <h1>Warehouse stock, tracked as it moves.</h1>
           <p>
-            StockLite gives your team one place to see inventory, move stock
-            between warehouses, and catch reorder points before shelves run dry.
+            Track inventory, move stock between warehouses, and catch reorder
+            points early.
           </p>
           <div className="form-actions">
             <Link href="/inventory" className="btn btn-primary">
@@ -66,7 +66,7 @@ export default function HomePage() {
           <div className="hero-visual-scene" aria-hidden="true">
             <WarehouseScene />
           </div>
-          <div className="floating-panel" style={{ marginTop: 40 }}>
+          <div className="floating-panel" style={{ marginTop: 20 }}>
             <h4>North Distribution Center</h4>
             <div className="big-stat">1,842 units</div>
             <p
@@ -107,6 +107,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   )
 }
