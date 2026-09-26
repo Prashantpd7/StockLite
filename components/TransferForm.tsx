@@ -98,8 +98,11 @@ export default function TransferForm({
         return next
       })
 
+      const destName =
+        warehouses.find((w) => w.id === destWarehouseId)?.name ??
+        'the destination warehouse'
       setSuccess(
-        `Transferred ${parsedQuantity} unit${parsedQuantity === 1 ? '' : 's'} of ${data.source.name} to the destination warehouse.`,
+        `Transferred ${parsedQuantity} unit${parsedQuantity === 1 ? '' : 's'} of ${data.source.name} to ${destName}.`,
       )
       setQuantity('')
     } catch {
@@ -177,17 +180,7 @@ export default function TransferForm({
         </div>
 
         <div className="form-error">{error}</div>
-        {!error && success && (
-          <p
-            style={{
-              fontSize: 12.5,
-              color: 'var(--moss-dark)',
-              margin: '-10px 0 12px',
-            }}
-          >
-            {success}
-          </p>
-        )}
+        {!error && success && <p className="form-success">{success}</p>}
 
         <div className="form-actions">
           <button
@@ -195,7 +188,7 @@ export default function TransferForm({
             type="submit"
             disabled={submitting}
           >
-            Transfer stock
+            {submitting ? 'Transferring…' : 'Transfer stock'}
           </button>
         </div>
       </form>

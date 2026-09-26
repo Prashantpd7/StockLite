@@ -426,6 +426,12 @@ tbody tr:last-child td {
   min-height: 16px;
 }
 
+.form-success {
+  font-size: 12.5px;
+  color: var(--moss-dark);
+  margin: -10px 0 12px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -539,6 +545,171 @@ tbody tr:last-child td {
   font-size: 12.5px;
   color: var(--steel);
   margin-top: 2px;
+}
+
+/* Bonus: warehouse low-stock summary */
+.lowstock-section {
+  margin-top: 30px;
+}
+
+.lowstock-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.lowstock-header h2 {
+  font-size: 20px;
+}
+
+.lowstock-header p {
+  margin: 5px 0 0;
+  color: var(--steel);
+  font-size: 13.5px;
+}
+
+.lowstock-total {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--moss-dark);
+  background: rgba(75, 99, 87, 0.12);
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.lowstock-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.lowstock-card {
+  padding: 18px 20px;
+}
+
+.lowstock-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lowstock-card-title h3 {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.lowstock-location {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--steel);
+}
+
+.lowstock-count {
+  flex-shrink: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.lowstock-count.is-critical {
+  background: rgba(139, 74, 63, 0.14);
+  color: var(--rust);
+}
+
+.lowstock-count.is-low {
+  background: rgba(166, 124, 61, 0.14);
+  color: #6e5326;
+}
+
+.lowstock-count.is-empty {
+  background: rgba(75, 99, 87, 0.12);
+  color: var(--moss-dark);
+}
+
+.lowstock-empty {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  color: var(--steel);
+}
+
+.lowstock-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 7px 12px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--moss-dark);
+  background: transparent;
+  border: 1px solid var(--steel-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.lowstock-toggle:hover {
+  border-color: var(--moss);
+  background: rgba(75, 99, 87, 0.06);
+}
+
+.lowstock-toggle span {
+  font-size: 9px;
+}
+
+.lowstock-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--paper-dim);
+}
+
+.lowstock-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--paper-dim);
+}
+
+.lowstock-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lowstock-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lowstock-item-name {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.lowstock-item-meta {
+  font-size: 12px;
+  color: var(--steel);
+}
+
+@media (max-width: 860px) {
+  .lowstock-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Login page */

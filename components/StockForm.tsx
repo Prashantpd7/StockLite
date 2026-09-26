@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { Product } from '@/lib/types'
+import { Product, Warehouse } from '@/lib/types'
 
 export default function StockForm({
   products: initialProducts,
+  warehouses,
 }: {
   products: Product[]
+  warehouses: Warehouse[]
 }) {
   const [products, setProducts] = useState(initialProducts)
   const [productId, setProductId] = useState(initialProducts[0]?.id ?? '')
@@ -16,6 +18,8 @@ export default function StockForm({
   const [submitting, setSubmitting] = useState(false)
 
   const selectedProduct = products.find((p) => p.id === productId)
+  const warehouseName = (id: string) =>
+    warehouses.find((w) => w.id === id)?.name ?? id
 
   async function submitMovement(direction: 'IN' | 'OUT') {
     setError('')
@@ -80,7 +84,8 @@ export default function StockForm({
           >
             {products.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.name} — {p.warehouseId} ({p.currentStock} on hand)
+                {p.name} — {warehouseName(p.warehouseId)} ({p.currentStock} on
+                hand)
               </option>
             ))}
           </select>
@@ -99,17 +104,7 @@ export default function StockForm({
         </div>
 
         <div className="form-error">{error}</div>
-        {!error && success && (
-          <p
-            style={{
-              fontSize: 12.5,
-              color: 'var(--moss-dark)',
-              margin: '-10px 0 12px',
-            }}
-          >
-            {success}
-          </p>
-        )}
+        {!error && success && <p className="form-success">{success}</p>}
 
         <div className="form-actions">
           <button
@@ -118,7 +113,7 @@ export default function StockForm({
             disabled={submitting}
             onClick={() => submitMovement('IN')}
           >
-            Stock in
+            {submitting ? 'Saving…' : 'Stock in'}
           </button>
           <button
             type="button"
@@ -126,7 +121,7 @@ export default function StockForm({
             disabled={submitting}
             onClick={() => submitMovement('OUT')}
           >
-            Stock out
+            {submitting ? 'Saving…' : 'Stock out'}
           </button>
         </div>
       </form>
