@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Archivo, IBM_Plex_Sans } from 'next/font/google'
+import WarehouseBackdrop from '@/components/WarehouseBackdrop'
 import './globals.css'
 
 const archivo = Archivo({
   subsets: ['latin'],
   variable: '--font-archivo',
-  weight: ['500', '700'],
+  weight: ['500', '600', '700'],
 })
 const plexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -25,7 +26,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${archivo.variable} ${plexSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <WarehouseBackdrop />
+        <div className="app-root">{children}</div>
+      </body>
     </html>
   )
 }

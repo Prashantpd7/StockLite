@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import WarehouseScene from '@/components/WarehouseScene'
 import {
   IconInventory,
   IconStock,
@@ -42,9 +43,6 @@ export default function HomePage() {
         <div className="links">
           <Link href="/login">Sign in</Link>
         </div>
-        <Link href="/inventory" className="btn btn-primary">
-          Open dashboard
-        </Link>
       </nav>
 
       <section className="hero-split">
@@ -65,13 +63,16 @@ export default function HomePage() {
         </div>
 
         <div className="hero-visual">
+          <div className="hero-visual-scene" aria-hidden="true">
+            <WarehouseScene />
+          </div>
           <div className="floating-panel" style={{ marginTop: 40 }}>
             <h4>North Distribution Center</h4>
             <div className="big-stat">1,842 units</div>
             <p
               style={{
                 fontSize: 12.5,
-                color: 'var(--moss-dark)',
+                color: 'var(--moss-text)',
                 margin: '4px 0 0',
               }}
             >

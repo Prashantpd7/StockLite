@@ -85,13 +85,17 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-brand">
-        <div className="sidebar-brand-mark">SL</div>
-        <div className="sidebar-brand-text">
+      <Link
+        href="/"
+        className="sidebar-brand"
+        aria-label="StockLite home"
+      >
+        <span className="sidebar-brand-mark">SL</span>
+        <span className="sidebar-brand-text">
           StockLite
           <span>Warehouse Inventory</span>
-        </div>
-      </div>
+        </span>
+      </Link>
 
       <nav className="sidebar-nav">
         {NAV_ITEMS.map((item) => {
@@ -110,14 +114,25 @@ export default function Sidebar() {
       </nav>
 
       <div className="sidebar-footer">
-        <span className="signed-in-label">Signed in as</span>{' '}
-        <strong>Jordan Ruiz</strong>
-        <Link
-          href="/login"
-          className="sidebar-link"
-          style={{ padding: '6px 0 0' }}
-        >
-          Switch user
+        <Link href="/login" className="account-button" aria-label="Sign out">
+          <span className="account-avatar" aria-hidden="true">
+            JR
+          </span>
+          <span className="account-name">Jordan Ruiz</span>
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <path d="M10 17l5-5-5-5M15 12H3" />
+          </svg>
         </Link>
       </div>
     </aside>

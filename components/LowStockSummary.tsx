@@ -46,12 +46,7 @@ export default function LowStockSummary({
   return (
     <section className="lowstock-section" aria-labelledby="lowstock-heading">
       <div className="lowstock-header">
-        <div>
-          <h2 id="lowstock-heading">Low-stock summary</h2>
-          <p>
-            Products at or below their reorder threshold, grouped by warehouse.
-          </p>
-        </div>
+        <h2 id="lowstock-heading">Low-stock summary</h2>
         <span className="lowstock-total">
           {totalLow} item{totalLow === 1 ? '' : 's'} need replenishment
         </span>

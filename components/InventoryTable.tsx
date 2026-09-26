@@ -38,27 +38,6 @@ export default function InventoryTable({
 
   return (
     <>
-      <div className="summary-strip">
-        <div className="summary-tile">
-          <div className="value">{products.length}</div>
-          <div className="label">Total SKUs tracked</div>
-        </div>
-        <div className="summary-tile">
-          <div className="value">{warehouses.length}</div>
-          <div className="label">Warehouses</div>
-        </div>
-        <div className="summary-tile">
-          <div className="value">{categories.length}</div>
-          <div className="label">Categories</div>
-        </div>
-        <div className="summary-tile">
-          <div className="value">
-            {products.reduce((sum, p) => sum + p.currentStock, 0)}
-          </div>
-          <div className="label">Units on hand</div>
-        </div>
-      </div>
-
       <div className="filter-bar">
         <select
           value={selectedCategory}
@@ -97,8 +76,8 @@ export default function InventoryTable({
                 <th>Product</th>
                 <th>Category</th>
                 <th>Warehouse</th>
-                <th>Current stock</th>
-                <th>Reorder threshold</th>
+                <th className="num">Current stock</th>
+                <th className="num">Reorder threshold</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -107,11 +86,15 @@ export default function InventoryTable({
                 const status = getStockStatus(product)
                 return (
                   <tr key={product.id}>
-                    <td>{product.name}</td>
+                    <td className="cell-product">{product.name}</td>
                     <td>{product.category}</td>
-                    <td>{warehouseName(product.warehouseId)}</td>
-                    <td>{product.currentStock}</td>
-                    <td>{product.reorderThreshold}</td>
+                    <td>
+                      <span className="warehouse-tag">
+                        {warehouseName(product.warehouseId)}
+                      </span>
+                    </td>
+                    <td className="num">{product.currentStock}</td>
+                    <td className="num">{product.reorderThreshold}</td>
                     <td>
                       <StatusBadge
                         status={status}

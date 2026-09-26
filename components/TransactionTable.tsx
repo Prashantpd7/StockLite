@@ -78,17 +78,23 @@ export default function TransactionTable({
                 <th>Product</th>
                 <th>Warehouse</th>
                 <th>Type</th>
-                <th>Quantity</th>
+                <th className="num">Quantity</th>
                 <th>Timestamp</th>
               </tr>
             </thead>
             <tbody>
               {visibleTransactions.map((t) => (
                 <tr key={t.id}>
-                  <td>{t.productName}</td>
-                  <td>{t.warehouseName}</td>
-                  <td>{TYPE_LABELS[t.type] ?? t.type}</td>
-                  <td>{t.quantity}</td>
+                  <td className="cell-product">{t.productName}</td>
+                  <td>
+                    <span className="warehouse-tag">{t.warehouseName}</span>
+                  </td>
+                  <td>
+                    <span className={`tx-badge tx-${t.type.toLowerCase().replace('_', '-')}`}>
+                      {TYPE_LABELS[t.type] ?? t.type}
+                    </span>
+                  </td>
+                  <td className="num">{t.quantity}</td>
                   <td>{new Date(t.timestamp).toLocaleString()}</td>
                 </tr>
               ))}
